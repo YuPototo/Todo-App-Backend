@@ -3,6 +3,8 @@ import type { Express } from 'express-serve-static-core'
 import logger, { useLog } from '@/utils/logger'
 
 import userRouter from './routes/userRoute'
+import todoRouter from './routes/todoRoute'
+
 import { getErrorMessage } from './utils/err/errUtils'
 
 const API_PREFIX = '/api'
@@ -16,6 +18,7 @@ export async function createApp(): Promise<Express> {
 
     // routes
     app.use(`${API_PREFIX}/users`, userRouter)
+    app.use(`${API_PREFIX}/todos`, todoRouter)
 
     // Error-handling middleware: 必须使用 4个 argument
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
