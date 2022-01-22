@@ -18,6 +18,9 @@ const parsedEnv = dotenvParseVariables(env)
 interface Config {
     port: number
 
+    appSecret: string
+    tokenExpireDays: string
+
     logger: {
         morgan: boolean
         morganBody: boolean
@@ -32,6 +35,9 @@ interface Config {
 
 const config: Config = {
     port: parsedEnv.PORT as number,
+
+    appSecret: parsedEnv.APP_SECRET as string,
+    tokenExpireDays: parsedEnv.TOKEN_EXPIRE_DAYS as string,
 
     logger: {
         morgan: parsedEnv.MORGAN_LOGGER as boolean,
