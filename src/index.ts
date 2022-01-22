@@ -1,3 +1,3 @@
-import someFunc from '@/module/someModule'
+import { buyLottery } from '@/exampleModule/buyLottery'
 
-someFunc()
+buyLottery(1, 10)
