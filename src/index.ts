@@ -1,3 +1,11 @@
-import { buyLottery } from '@/exampleModule/buyLottery'
+import { createApp } from './app'
 
-buyLottery(1, 10)
+createApp()
+    .then((app) => {
+        app.listen(8080, () => {
+            console.log('Listening on http://localhost:8080')
+        })
+    })
+    .catch((err) => {
+        console.error(`Error: ${err}`)
+    })

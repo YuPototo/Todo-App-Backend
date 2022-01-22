@@ -26,3 +26,10 @@
 -   `yarn test unit` 会运行所有的单元测试
 -   `yarn test int`: 会运行所有的 integration test
 -   `yarn test`: 会运行所有的测试
+
+补充，如果只有一种 test，比如只有 integration test，可以放弃使用文件夹结构。修改文件名即可。
+比如：`someModule.unit.test.ts`
+
+## code
+
+[Github Repo](https://github.com/YuPototo/express_mongo_example/tree/49cb80c1d03ec03e86fcdeefb97d94bf18d2d468)
