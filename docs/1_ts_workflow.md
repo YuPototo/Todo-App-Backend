@@ -1,24 +1,24 @@
-# 1 init project
+# 1 TS Workflow
 
 目标：完成项目创建。
 
 任务：
 
--   能够成功运行 `yarn dev`: 实现项目开发阶段 compile
--   能够运行 `yarn build`: 完成项目的 compile
--   能够运行 `yarn start`: 能够成功运行已 compile 的代码
+- 能够成功运行 `yarn dev`: 实现项目开发阶段 compile
+- 能够运行 `yarn build`: 完成项目的 compile
+- 能够运行 `yarn start`: 能够成功运行已 compile 的代码
 
 需要实现的 tooling 功能：
 
--   `yarn dev` 的 hot reload
--   absolute import
+- `yarn dev` 的 hot reload
+- absolute import
 
 ## 前提
 
 已经安装
 
--   Node: v16
--   Yarn
+- Node: v16
+- Yarn
 
 ## tsconfig 的配置
 
@@ -26,11 +26,11 @@
 
 ```json
 {
-    "compilerOptions": {
-        "lib": ["ES2021"],
-        "module": "CommonJS",
-        "target": "ES2021"
-    }
+  "compilerOptions": {
+    "lib": ["ES2021"],
+    "module": "CommonJS",
+    "target": "ES2021"
+  }
 }
 ```
 

@@ -1,3 +1,3 @@
-import someFunc from "@/module/someModule";
+import someFunc from '@/module/someModule'
 
-someFunc();
+someFunc()

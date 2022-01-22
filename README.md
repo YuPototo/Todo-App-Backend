@@ -4,13 +4,13 @@
 
 Features:
 
--   User can create account
--   User can login
--   CRUD operation of Todo items
+- User can create account
+- User can login
+- CRUD operation of Todo items
 
 ## stacks
 
--   NodeJS：v16 or newer
--   ExpressJS
--   Typescript
--   Mongodb
+- NodeJS：v16 or newer
+- ExpressJS
+- Typescript
+- Mongodb
