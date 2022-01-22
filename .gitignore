@@ -1,3 +1,9 @@
 .vscode
 node_modules
 out
+coverage
+
+
+# 环境变量
+.env.dev
+.env.prod
