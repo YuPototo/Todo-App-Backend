@@ -23,6 +23,11 @@ interface Config {
         morganBody: boolean
         loggerLevel: LogLevel
     }
+
+    mongo: {
+        url: string
+        autoIndex: boolean
+    }
 }
 
 const config: Config = {
@@ -32,6 +37,11 @@ const config: Config = {
         morgan: parsedEnv.MORGAN_LOGGER as boolean,
         morganBody: parsedEnv.MORGAN_BODY_LOGGER as boolean,
         loggerLevel: parsedEnv.LOGGER_LEVEL as LogLevel,
+    },
+
+    mongo: {
+        url: parsedEnv.MONGO_URL as string,
+        autoIndex: parsedEnv.MONGO_AUTO_INDEX as boolean,
     },
 }
 
