@@ -7,8 +7,8 @@ import todoService, {
     UpdatableTodoPart,
 } from '@/services/todoService'
 import logger from '@/utils/logger'
-import { isReturnableControllerError, ReturnableControllerObj } from './types'
-import { isServiceFailure } from '@/services/types'
+import { isReturnableControllerError, ReturnableControllerObj } from './utils'
+import { isServiceFailure } from '@/services/utils'
 
 // * create todo controller
 export const createTodoHandler: RequestHandler = async (req, res, next) => {
@@ -64,13 +64,7 @@ export const getOneTodoHandler: RequestHandler = async (req, res, next) => {
     }
 }
 
-const handleGetTodoError = (error?: ServiceError): ReturnableControllerObj => {
-    if (!error) {
-        const message = 'createTodo return no proper error'
-        logger.error(message)
-        return { statusCode: 500, message }
-    }
-
+const handleGetTodoError = (error: ServiceError): ReturnableControllerObj => {
     const { name: errorName } = error
 
     if (errorName === TodoServiceErrorEnum.WRONG_OWNER) {
@@ -122,18 +116,12 @@ export const deleteTodoHandler: RequestHandler = async (req, res, next) => {
 }
 
 const handleDeleteTodoError = (
-    error?: ServiceError
+    error: ServiceError
 ): ReturnableControllerObj => {
-    if (!error) {
-        const message = 'createTodo return no proper error'
-        logger.error(message)
-        return { statusCode: 500, message }
-    }
-
     const { name: errorName } = error
 
     if (errorName === TodoServiceErrorEnum.WRONG_OWNER) {
-        const message = `/unauthorized/: ${error.message}`
+        const message = `unauthorized: ${error.message}`
         return {
             statusCode: 401,
             message,
@@ -209,14 +197,8 @@ export const updateTodoHandler: RequestHandler = async (req, res, next) => {
 }
 
 const handleUpdateTodoError = (
-    error?: ServiceError
+    error: ServiceError
 ): ReturnableControllerObj => {
-    if (!error) {
-        const message = 'createTodo return no proper error'
-        logger.error(message)
-        return { statusCode: 500, message }
-    }
-
     const { name: errorName } = error
 
     if (errorName === TodoServiceErrorEnum.WRONG_OWNER) {

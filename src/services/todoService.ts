@@ -16,7 +16,6 @@ export enum TodoServiceErrorEnum {
 
 const checkUserOwnTodo = async (user: IUser, todo: ITodo) => {
     if (todo.user.toString() !== user._id.toString()) {
-        // eslint-disable-next-line quotes
         const message = "You don't own this resource"
         const error = { name: TodoServiceErrorEnum.WRONG_OWNER, message }
         throw error
@@ -140,6 +139,6 @@ const updateTodo = async (
     return newTodo
 }
 
-export type { ServiceFailure as ServiceError } from './types'
+export type { ServiceFailure as ServiceError } from './utils'
 
 export default { createTodo, getTodo, deleteTodo, getUserTodos, updateTodo }

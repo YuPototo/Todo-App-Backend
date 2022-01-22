@@ -3,8 +3,8 @@ import { RequestHandler } from 'express'
 import userService, { UserServiceError } from '@/services/userService'
 import { logger } from '@/utils/logger/logger'
 
-import { isServiceFailure, ServiceFailure } from '@/services/types'
-import { ReturnableControllerObj } from './types'
+import { isServiceFailure, ServiceFailure } from '@/services/utils'
+import { ReturnableControllerObj } from './utils'
 
 export const createUserHandler: RequestHandler = async (req, res, next) => {
     const { password, userName } = req.body

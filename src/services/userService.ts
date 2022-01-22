@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken'
 
 import config from '@/config'
 
-import type { ServiceFailure } from './types'
+import type { ServiceFailure } from './utils'
 
 export enum UserServiceError {
     DUPLICATE_USER_NAME = 'duplicate_username',
