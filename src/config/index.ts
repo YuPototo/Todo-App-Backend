@@ -25,6 +25,7 @@ interface Config {
         morgan: boolean
         morganBody: boolean
         loggerLevel: LogLevel
+        errorLog: string
     }
 
     mongo: {
@@ -43,6 +44,7 @@ const config: Config = {
         morgan: parsedEnv.MORGAN_LOGGER as boolean,
         morganBody: parsedEnv.MORGAN_BODY_LOGGER as boolean,
         loggerLevel: parsedEnv.LOGGER_LEVEL as LogLevel,
+        errorLog: parsedEnv.ERROR_LOG as string,
     },
 
     mongo: {

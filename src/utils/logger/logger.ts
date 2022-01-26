@@ -23,35 +23,50 @@ export type LogLevel =
 //   silly: 6
 // }
 
-const prettyJson = winston.format.printf((info) => {
-    if (info.message.constructor === Object) {
-        info.message = JSON.stringify(info.message, null, 4)
-    }
-    return `${info.timestamp} ${info.label || '-'} ${info.level}: ${
-        info.message
-    }`
-})
+const prettyJson = (indent?: number) =>
+    winston.format.printf((info) => {
+        if (info.message.constructor === Object) {
+            info.message = JSON.stringify(info.message, null, indent)
+        }
+        return `${info.timestamp} ${info.label || '-'} ${info.level}: ${
+            info.message
+        }`
+    })
 
-const format = winston.format.combine(
+const consoleFormat = winston.format.combine(
     winston.format.colorize(),
     winston.format.prettyPrint(),
     winston.format.splat(),
     winston.format.simple(),
     winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSS' }),
-    prettyJson
+    prettyJson(4)
 )
+
+const fileFormat = winston.format.combine(
+    winston.format.prettyPrint(),
+    winston.format.splat(),
+    winston.format.simple(),
+    winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSS' }),
+    prettyJson()
+)
+
+const transports = [
+    new winston.transports.File({
+        filename: config.logger.errorLog,
+        level: 'error',
+        format: fileFormat,
+    }),
+    new winston.transports.Console({ format: consoleFormat }),
+]
 
 const level =
     config.logger.loggerLevel === 'silent'
         ? undefined
         : config.logger.loggerLevel
 
-const transports = [new winston.transports.Console({})] // 在这里设置输出形式
-
 export const logger = winston.createLogger({
     level,
     silent: config.logger.loggerLevel === 'silent',
-    format,
     defaultMeta: { service: 'express_mongo' },
     transports,
 })
