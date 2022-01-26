@@ -43,3 +43,5 @@ jest.config.js
 .eslintignore
 .eslintrc.json
 
+# logs
+logs

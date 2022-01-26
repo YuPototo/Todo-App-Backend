@@ -17,6 +17,8 @@ RUN yarn build
 # Our Second stage, that creates an image for production
 FROM node:16 AS app-prod
 
+RUN mkdir p ~/logs
+
 WORKDIR /app
 
 COPY config ./config

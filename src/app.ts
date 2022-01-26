@@ -10,8 +10,6 @@ import { getErrorMessage } from './utils/err/errUtils'
 
 const API_PREFIX = '/api'
 
-logger.error({ info: 'abc' })
-
 export async function createApp(): Promise<Express> {
     const app = express()
 
