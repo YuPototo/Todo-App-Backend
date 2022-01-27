@@ -97,7 +97,7 @@ const errorTransport: DailyRotateFile = new DailyRotateFile({
     filename: 'error_%DATE%.log',
     datePattern: 'YYYY_ww',
     maxSize: '20m',
-    maxFiles: '30d',
+    maxFiles: '8',
     level: 'error',
 })
 
