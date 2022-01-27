@@ -91,7 +91,6 @@ const httpTransport: DailyRotateFile = new DailyRotateFile({
     level: 'http',
 })
 
-console.log(config.logger)
 const errorTransport: DailyRotateFile = new DailyRotateFile({
     format: errorLogFormat,
     dirname: config.logger.errorLogDir,

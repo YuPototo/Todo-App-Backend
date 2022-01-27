@@ -8,7 +8,7 @@
         "build": "tsc",
         "start": "ENV_FILE=./config/.env.prod node -r tsconfig-paths/register ./out/index.js",
         "dev": "ENV_FILE=./config/.env.dev tsnd -r tsconfig-paths/register --respawn --transpile-only ./src/index.ts",
-        "up": "docker-compose -f docker-compose.test.yml up -d",
+        "up": "docker-compose -f docker-compose.test.yml -p test_db up -d",
         "down": "docker-compose -f docker-compose.test.yml down",
         "test": "ENV_FILE=./config/.env.test jest --runInBand",
         "lint": "eslint"
