@@ -2,22 +2,28 @@ import morgan from 'morgan'
 import morganBody from 'morgan-body'
 
 import config from '@/config'
-// import logger from "./index";
+import logger from './index'
 
 import type { Express } from 'express-serve-static-core'
 
+const removeNewlineAtEnd = (msg: string) => {
+    return msg.substring(0, msg.lastIndexOf('\n'))
+}
+
 const LOGGER_FORMAT =
-    ':method :url :status :response-time ms - :res[content-length]'
+    ':remote-addr,:method,:url,:status,:res[content-length],:response-time'
 
 function useMorgan(app: Express) {
     app.use(
         morgan(LOGGER_FORMAT, {
-            // specify a function for skipping requests without errors
-            // skip: (req, res) => res.statusCode < 400,
             // specify a stream for requests logging
-            // stream: {
-            //     write: (msg) => logger.http(msg),
-            // },
+            stream: {
+                write: (msg) => {
+                    // https://www.titanwolf.org/Network/q/5c84bf29-ed66-4443-991f-e8ba44455db1/y
+                    const msgWithoutNewline = removeNewlineAtEnd(msg)
+                    logger.http(msgWithoutNewline)
+                },
+            },
         })
     )
 }
