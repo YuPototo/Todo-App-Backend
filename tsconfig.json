@@ -27,5 +27,9 @@
 
     /* Completeness */
     "skipLibCheck": true // 默认配置，不修改
-  }
+  },
+   /* ignore */
+      "exclude": [
+        "**/*.test.ts"
+    ]
 }
