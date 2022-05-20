@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express'
 import type { Express } from 'express-serve-static-core'
 import logger, { useLog } from '@/utils/logger'
+import cors from 'cors'
 
 import userRouter from './routes/userRoute'
 import todoRouter from './routes/todoRoute'
@@ -14,6 +15,7 @@ export async function createApp(): Promise<Express> {
     const app = express()
 
     app.use(express.json()) // 保证 http request body 会被作为 json 传入
+    app.use(cors()) // 允许跨域访问
 
     useLog(app)
 
